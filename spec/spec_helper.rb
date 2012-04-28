@@ -36,6 +36,9 @@ Spork.prefork do
     # rspec-rails.
     config.infer_base_class_for_anonymous_controllers = false
     
+    # devise
+    config.include Devise::TestHelpers, :type => :controller
+    
     # master data
     load "#{Rails.root}/db/seeds.rb"
   end

@@ -1,0 +1,25 @@
+ja:
+  layouts:
+    application:
+      nav:
+        logout: "ログアウト"
+  shared:
+    _login_button:
+      description: 
+        new: "FacebookまたはTwitterアカウントでログインすることで〜"
+        add: "更に別のアカウントと紐付けることも可能です。"
+      facebook:
+        new: "Facebookアカウントでログイン"
+        add: "Facebookアカウントを追加"
+      twitter: 
+        new: "Twitterアカウントでログイン"
+        add: "Twitterアカウントを追加"
+      github: 
+        new: "Githubアカウントでログイン"
+        add: "Githubアカウントを追加"
+  users:
+    current:
+      withdraw:
+        label: "退会"
+        description: "退会処理をすると、情報が全て削除されます。本当に退会しますか？"
+        completed: "退会しました。"

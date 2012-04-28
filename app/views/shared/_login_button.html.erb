@@ -1,0 +1,31 @@
+<% if !user_signed_in? || !current_user.has_all_provider?%>
+<section class="login">
+  <p><%= t("shared._login_button.description.#{locale_key}")%></p>
+  <ul class="unstyled">
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.facebook.id) %>
+    <li>
+      <%=link_to user_omniauth_authorize_path(:facebook), :class => 'btn btn-primary' do %>
+        <i class="icon-white icon-plus"></i>
+        <%= t("shared._login_button.facebook.#{locale_key}") %>
+      <% end %>
+    </li>
+    <% end %>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.twitter.id) %>
+    <li>
+      <%=link_to user_omniauth_authorize_path(:twitter), :class => 'btn btn-info' do %>
+        <i class="icon-white icon-plus"></i>
+        <%= t("shared._login_button.twitter.#{locale_key}") %>
+      <% end %>
+    </li>
+    <% end %>
+    <% if !user_signed_in? || !current_user.has_provider?(Provider.github.id) %>
+    <li>
+      <%=link_to user_omniauth_authorize_path(:github), :class => 'btn' do %>
+        <i class="icon-plus"></i>
+        <%= t("shared._login_button.github.#{locale_key}") %>
+      <% end %>
+    </li>
+    <% end %>
+  </ul>
+</section>
+<% end %>

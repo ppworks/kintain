@@ -1,5 +1,25 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      nav:
+        logout: "Logout"
+  shared:
+    _login_button:
+      description: 
+        new: "Login with facebook or twitter account to xxx."
+        add: "you can connected other provider's account."
+      facebook:
+        new: "Login with Facebook account"
+        add: "Connect with Facebook account"
+      twitter: 
+        new: "Login with Twitter account"
+        add: "Connect with Twitter account"
+      github: 
+        new: "Login with Github account"
+        add: "Connect with Github account"
+  users:
+    current:
+      withdraw:
+        label: "delete your account"
+        description: "If you withdraw, your information all delete. Are you really want to withdraw?"
+        completed: "your account was completely deleted."

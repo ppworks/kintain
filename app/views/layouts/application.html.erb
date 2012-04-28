@@ -1,14 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
 <head>
-  <title>P4dhack</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <meta charset="utf-8">
+  <title>p4dhack</title>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
+
+  <!-- Le styles -->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- Le fav and touch icons -->
+  <link href="/assets/favicon.ico" rel="shortcut icon">
+  <link href="/assets/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/assets/apple-touch-icon-precomposed.png " rel="apple-touch-icon">
+  <script charset="utf-8" src="//widgets.twimg.com/j/2/widget.js"></script>
+  <script src="//platform.twitter.com/widgets.js"></script>
+  <%= render 'shared/ga' %>
+  <%= yield :head %>
 </head>
-<body>
-
+<body class="<%= yield :body_class %>">
+  <header>
+    <nav>
+      <ul>
+        <% if user_signed_in? %>
+          <li><%= link_to t('.nav.mypage'), current_user_path %></li>
+          <li><%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
 <%= yield %>
-
+<%= javascript_include_tag "application" %>
+<%= render 'shared/fb_load_js' %>
 </body>
 </html>

@@ -1,0 +1,26 @@
+p {
+  word-wrap: break-word;
+}
+
+img.face {
+  border-radius: 3px;
+}
+
+ul.sns {
+  margin-left: 0;
+  >li {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+ul.providers {
+  >li {
+    display: inline-block;
+  }
+}
+
+.twtr-widget .twtr-img img {
+  width: auto;
+  height: auto;
+}

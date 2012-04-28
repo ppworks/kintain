@@ -1,0 +1,28 @@
+<script>
+new TWTR.Widget({
+  version: 2,
+  type: 'search',
+  search: '<%=tw_search_key.present? ? tw_search_key : '' %>',
+  interval: 30000,
+  title: '<%=tw_search_key.present? ? tw_search_key : '' %>',
+  width: 'auto',
+  height: 'auto',
+  theme: {
+    shell: {
+      background: 'ff0000',
+      color: '255'
+    },
+    tweets: {
+      background: '0',
+      color: '0',
+      links: '0'
+    }
+  },
+  features: {
+    scrollbar: false,
+    loop: true,
+    live: true,
+    behavior: 'default'
+  }
+}).render().start();
+</script>

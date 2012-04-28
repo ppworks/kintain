@@ -1,0 +1,14 @@
+<%= render 'users/user', :user => @user %>
+<ul class="unstyled providers">
+  <% @user.providers.each do |provider| %>
+    <li>
+      <%= link_to '', rel: 'tooltip', :'data-title' => provider.name, :'data-placement' => 'bottom' do %>
+        <%= provider.name %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= render 'shared/login_button'%>
+<section class="withdraw">
+<%= link_to t('.withdraw.label'), destory_current_user_path, :method => :delete, :confirm => t('.withdraw.description'), :class => "btn btn-danger"%>
+</section>

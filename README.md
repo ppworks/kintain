@@ -13,6 +13,14 @@ touch .env
 
 ```
 RACK_ENV=development
+FB_ADMINS=nnnn,mmmm
+FB_APP_ID=xxx
+FB_APP_SECRET=xxx
+GH_APP_ID=yyy
+GH_APP_SECRET=yyy
+TW_APP=zzz
+TW_APP_SECRET=zzz
+
 ```
 
 ### 起動

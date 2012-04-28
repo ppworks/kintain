@@ -1,5 +1,18 @@
 # [#p4dhack](https://twitter.com/?q=#!/search/%23p4dhack)用repository
 
+# local検証用の各種SNSアプリケーションを作成する
+
+## facebook アプリ作成
+
+[facebook DEVELOPERS](https://developers.facebook.com/apps)から作成する。
+
+## twtitter アプリ作成
+
+[twitter developers](https://dev.twitter.com/apps/new)から作成する。
+
+## github アプリ作成
+
+[github Register a new OAuth application](https://github.com/settings/applications/new)
 
 ## サーバ起動
 

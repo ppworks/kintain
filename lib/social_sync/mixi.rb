@@ -14,20 +14,17 @@ module SocialSync
     
     def self.profiles token, params = {}
       if params[:uid].present?
-        uid_condition = 'id IN (' + params[:uid].join(',') + ')'
+        user_id = params[:uid] 
       else
-        uid_condition = 'id = me()'
+        user_id = '@me'
       end
 
-      res = self.exec_fql <<-FQL, token
-        SELECT
-          id, name, url, pic, pic_square, pic_small,
-          pic_big, type, username
-        FROM profile WHERE #{uid_condition}
-      FQL
-      
-      res.map do |user|
-        self.format_profile user
+      response = self.fetch_mixi params[:providers_user] do |token_obj|
+        response = JSON.parse token_obj.get("/2/people/#{user_id}/@self")
+        response = response["entry"]
+        response.map do|user|
+          self.format_profile user
+        end
       end
     end
     
@@ -184,8 +181,9 @@ module SocialSync
         token = OAuth2::AccessToken.new(client, access_token)
         res = yield token
       rescue => e
-        token = client.web_server.refresh_access_token(providers_user.refresh_token, :grant_type => "refresh_token")
+        #token = client.web_server.refresh_access_token(providers_user.refresh_token, :grant_type => "refresh_token")
         
+        token = token.refresh! :refresh_token => providers_user.refresh_token
         providers_user.access_token = token.token
         providers_user.refresh_token = token.refresh_token
         providers_user.save!

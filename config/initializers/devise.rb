@@ -216,6 +216,8 @@ Devise.setup do |config|
    {:scope => FacebookConfig.scope, :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   config.omniauth :twitter, TwitterConfig.app_id, TwitterConfig.app_secret
   config.omniauth :github, GithubConfig.app_id, GithubConfig.app_secret
+  config.omniauth :mixi, MixiConfig.app_id, MixiConfig.app_secret,
+   {:scope => MixiConfig.scope, :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}} 
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

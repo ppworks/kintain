@@ -31,4 +31,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to root_path
     end
   end
+
+  def mixi
+    @user = User.find_for_mixi_oauth(env["omniauth.auth"], current_user)
+    if @user.persisted?
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "mixi"
+      sign_in_and_redirect @user, :event => :authentication
+    else
+      flash[:notice] = I18n.t "devise.omniauth_callbacks.failure", :kind => "mixi", :reason => "User create error"
+      redirect_to root_path
+    end
+  end
 end

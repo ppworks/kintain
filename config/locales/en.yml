@@ -21,6 +21,9 @@ en:
       github: 
         new: "Login with Github account"
         add: "Connect with Github account"
+      mixi: 
+        new: "Login with Mixi account"
+        add: "Connect with Mixi account"
   users:
     current:
       withdraw:

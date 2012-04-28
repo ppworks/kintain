@@ -24,6 +24,9 @@ ja:
       github: 
         new: "Githubアカウントでログイン"
         add: "Githubアカウントを追加"
+      mixi: 
+        new: "mixiアカウントでログイン"
+        add: "mixiアカウントを追加"
   users:
     current:
       withdraw:

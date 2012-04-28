@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/pivotal-sushi/omniauth-mixi.git
+  revision: daddb070550c4bdec605ead4e5692f76a8fc0049
+  specs:
+    omniauth-mixi (1.0.0)
+      omniauth-oauth2 (~> 1.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -240,6 +247,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omniauth-github
+  omniauth-mixi!
   omniauth-twitter
   pg
   rails (= 3.2.3)

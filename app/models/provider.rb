@@ -13,6 +13,10 @@ class Provider < ActiveRecord::Base
   def self.github
     self.find_by_provider_name 'github'
   end
+
+  def self.mixi
+    self.find_by_provider_name 'mixi'
+  end
   
   private
   def self.find_by_provider_name provider_name

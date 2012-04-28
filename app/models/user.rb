@@ -161,6 +161,56 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def self.find_for_mixi_oauth(auth, current_user = nil)
+    providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.mixi.id, auth['uid'].to_s
+    name = auth['info']['name']
+    image = auth['extra']['raw_info']['avatar_url']
+    email = auth['info']['email']||"#{auth['uid']}@mixi.example.com"
+    
+    if providers_user.nil?
+      if current_user.nil?
+        user = User.create!({
+          :password => Devise.friendly_token[0,20],
+          :name => name,
+          :email => email,
+          :image => image,
+          :default_provider_id => Provider.mixi.id
+        })
+      else
+        user = current_user
+      end
+      providers_user = ProvidersUser.create!({
+        :provider_id => Provider.mixi.id,
+        :user_id => user.id,
+        :user_key => auth['uid'].to_s,
+        :access_token => auth['credentials']['token'],
+        :refresh_token => auth['credentials']['refresh_token'],
+        :name => name,
+        :email => email,
+        :image => image,
+      })
+    else
+      user = User.find providers_user[:user_id]
+      if current_user.nil?
+        user.default_provider_id = Provider.mixi.id
+        user.save!
+      end
+      if user.default_provider_id == Provider.mixi.id
+        user.name = name
+        user.image = image
+        user.save!
+      end
+      
+      providers_user.name = name
+      providers_user.image = image
+      providers_user.email = email
+      providers_user.access_token = auth['credentials']['token']
+      providers_user.refresh_token = auth['credentials']['refresh_token']
+      providers_user.save!
+    end
+    user
+  end
   
   def self.find_by_path provider_name, user_key
     providers_user = ProvidersUser.where(:provider_id => Provider.send(provider_name).id, :user_key => user_key).first

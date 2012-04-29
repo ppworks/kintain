@@ -1,0 +1,33 @@
+body.posts {
+  ul.charts {
+    position: relative;
+    width: 320px;
+    height: 57px;
+    padding: 0;
+    background: blue;
+    &.none {
+      background: grey;
+    }
+    >li {
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      height: 57px;
+      &.event1 {
+        background: blue;
+      }
+      &.event2 {
+        background: green;
+      }
+      &.event3 {
+        background: red;
+      }
+      &.event4 {
+        background: green;
+      }
+      &.event5 {
+        background: yellow;
+      }
+    }
+  } 
+}

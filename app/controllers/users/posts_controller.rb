@@ -9,9 +9,21 @@ class Users::PostsController < ApplicationController
   def month
     @day = Time.parse "#{params[:year]}-#{params[:month]}-01"
     
-    @posts = Post.where(:user_id => @user.id)
-    @posts = @posts.where("created_at >= '#{@day.beginning_of_month.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_month.strftime("%Y-%m-%d %H:%M:%S")}'")
-    @posts = @posts.order("created_at ASC").all
+    posts = Post.where(:user_id => @user.id)
+    posts = posts.where("created_at >= '#{@day.beginning_of_month.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_month.strftime("%Y-%m-%d %H:%M:%S")}'")
+    posts = posts.order("created_at DESC").all
+
+    @posts = [nil] 
+    1.upto(@day.end_of_month.day) do |day|
+      @posts[day] = []
+    end
+    posts.each do|post|
+      day = post.created_at.strftime('%d')
+      @posts[day.to_i] << post if post.official?
+    end
+
+    @min = 0
+    @max = 24*60*60
   end
 
   def year

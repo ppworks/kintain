@@ -1,13 +1,24 @@
+<% content_for :body_class, ' posts' %>
 <h1><%= @day.strftime(t 'date_format_month') %></h1>
+<nav>
+  <ul>
+    
+  </ul>
+</nav>
 <% if @posts.present? %>
   <ul>
-  <% @posts.each do|post| %>
+  <% @posts[1..@posts.size].each_with_index do|posts, i| %>
     <li>
       <section>
-      <h1><%= post.event.label %></h1>
-      <time datetime="<%= post.created_at %>">
-        <%= post.created_at.strftime(t 'date_format_time') %>
-      </time>
+      <h2><%=i + 1%></h2>
+      <ul class="charts <%=Post.enough?(posts) ? '' : 'none'%>">
+        <% if Post.enough?(posts) %>
+          <% posts.each do|post| %>
+            <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
       </section>
     </li>
   <% end %>

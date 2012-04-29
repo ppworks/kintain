@@ -1,5 +1,5 @@
 P4dhack::Application.routes.draw do
-  resources :posts, :except => [:edit, :update]
+  resources :posts, :except => [:index, :edit, :update]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
   devise_scope :user do
@@ -14,7 +14,6 @@ P4dhack::Application.routes.draw do
 
   get '/users/:user_id/posts/:year/:month/:day' => 'users::posts#day', :as => :user_day_posts, :year => /\d+/, :month => /\d+/, :day => /\d+/
   get '/users/:user_id/posts/:year/:month' => 'users::posts#month', :as => :user_month_posts, :year => /\d+/, :month => /\d+/
-  get '/users/:user_id/posts/:year' => 'users::posts#year', :as => :user_year_posts, :year => /\d+/
 
   root :to => 'posts#new'
 end

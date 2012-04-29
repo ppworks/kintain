@@ -24,8 +24,4 @@ class Users::PostsController < ApplicationController
     @prev = @day - 1.month
     @next = @day + 1.month
   end
-
-  def year
-    
-  end
 end

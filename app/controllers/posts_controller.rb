@@ -1,15 +1,5 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
-  # GET /posts
-  # GET /posts.json
-  def index
-    @posts = Post.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @posts }
-    end
-  end
 
   # GET /posts/1
   # GET /posts/1.json
@@ -53,18 +43,6 @@ class PostsController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-  def destroy
-    @post = Post.where(:id => params[:id], :user_id => current_user.id).first
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url }
-      format.json { head :no_content }
     end
   end
 end

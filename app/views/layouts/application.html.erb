@@ -32,16 +32,18 @@
 <body class="<%= yield :body_class %>">
 	<div id="overlay">
 		<div id="wrapper">
-			<% if user_signed_in? %>
-			<header>
-				<div id="logo_s"><%= link_to image_tag("logo_s.png"), root_path %></div>
-				<div id="currentuserstatus">
-          <%= image_tag current_user.image, :class => :face %>
-					<%= link_to current_user.name, current_user_path%>
-          <%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %>
-				</div>
-		</header>
-			<% end %>
+      <% unless request.path == login_user_path %>
+      <header>
+        <div id="logo_s"><%= link_to image_tag("logo_s.png"), root_path %></div>
+        <% if user_signed_in? %>
+          <div id="currentuserstatus">
+            <%= image_tag current_user.image, :class => :face %>
+            <%= link_to current_user.name, current_user_path%>
+            <%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %>
+          </div>
+        <% end %>
+      </header>
+  <% end %>
 <%= yield %>
 <%= javascript_include_tag "application" %>
 <%= render 'shared/fb_load_js' %>

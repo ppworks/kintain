@@ -1,2 +1,2 @@
-<%= render 'users/user', :user => @user if current_user.id != @user.id %>
+<%= render 'users/user', :user => @user if !user_signed_in? || current_user.id != @user.id %>
 <%= render 'users/posts/day' %>

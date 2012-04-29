@@ -1,4 +1,5 @@
 en:
+  date_format: "%H:%M %d %b %Y"
   layouts:
     application:
       nav:
@@ -25,7 +26,7 @@ en:
         completed: "your account was completely deleted."
   event:
     records:
-      1: "家を出た"
-      2: "会社着いた"
-      3: "会社を出た"
-      4: "家着いた"
+      "1": "leave home"
+      "2": "come office"
+      "3": "leave office"
+      "4": "come home"

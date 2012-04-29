@@ -1,4 +1,5 @@
 ja:
+  date_format: "%Y/%m/%d %H:%m"
   layouts:
     application:
       nav:
@@ -25,7 +26,7 @@ ja:
         completed: "退会しました。"
   event:
     records:
-      1: "家を出た"
-      2: "会社着いた"
-      3: "会社を出た"
-      4: "家着いた"
+      "1": "家を出た"
+      "2": "会社着いた"
+      "3": "会社を出た"
+      "4": "家着いた"

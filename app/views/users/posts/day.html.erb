@@ -1,0 +1,14 @@
+<% if @posts.present? %>
+  <ul>
+  <% @posts.each do|post| %>
+    <li>
+      <section>
+      <h1><%= post.event.label %></h1>
+      <time datetime="<%= post.created_at %>">
+        <%= post.created_at.strftime(t 'date_format') %>
+      </time>
+      </section>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

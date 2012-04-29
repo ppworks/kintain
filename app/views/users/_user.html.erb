@@ -1,1 +1,2 @@
 <%= link_to_unless_current image_tag(user.image, :class => :face), user_path(:provider => user.default_provider.name, :user_key => user.user_key), rel: 'tooltip', :'data-title' => user.name, :'data-placement' => 'right', :title => user.name %>
+<%= user.name %>

@@ -5,7 +5,8 @@ class UsersController < ApplicationController
     @user = User.find current_user.id
     @day = Time.current
     @posts = Post.where(:user_id => @user.id)
-    @posts = @posts.where("created_at >= '#{@day.beginning_of_day.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_day.strftime("%Y-%m-%d %H:%M:%S")}'")
+    @posts = @posts.where("created_at >= ?", @day.beginning_of_day)
+    @posts = @posts.where("created_at <= ?", @day.end_of_day)
     @posts = @posts.order("created_at ASC").all
   end
   
@@ -15,7 +16,8 @@ class UsersController < ApplicationController
       @day = Time.current 
       
       posts = Post.where(:user_id => @user.id)
-      posts = posts.where("created_at >= '#{@day.beginning_of_month.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_month.strftime("%Y-%m-%d %H:%M:%S")}'")
+      posts = posts.where("created_at >= ?", @day.beginning_of_day)
+      posts = posts.where("created_at <= ?", @day.end_of_day)
       posts = posts.order("created_at DESC").all
 
       @posts = [nil] 

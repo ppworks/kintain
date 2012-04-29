@@ -1,0 +1,29 @@
+<% content_for :body_class, ' posts' %>
+<h1><%= @day.strftime(t 'date_format_month') %></h1>
+<nav>
+  <ul>
+    <li><%= link_to @prev.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @prev.strftime('%Y'), :month => @prev.strftime('%m')) %>
+    <li><%= link_to @next.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @next.strftime('%Y'), :month => @next.strftime('%m')) %>
+  </ul>
+</nav>
+<% if @posts.present? %>
+  <ul class="posts">
+  <% @posts[1..@posts.size].each_with_index do|posts, i| %>
+    <li>
+      <section>
+      <h2><%=i + 1%></h2>
+      <%= link_to user_day_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m'), :day => (i+1)) do %>
+        <ul class="charts <%=Post.enough?(posts) ? '' : 'none'%>">
+          <% if Post.enough?(posts) %>
+            <% posts.each do|post| %>
+              <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+      </section>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

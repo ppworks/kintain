@@ -12,6 +12,22 @@ class UsersController < ApplicationController
   def show
     begin
       @user = User.find_by_path params[:provider], params[:user_key]
+      @day = Time.current 
+      
+      posts = Post.where(:user_id => @user.id)
+      posts = posts.where("created_at >= '#{@day.beginning_of_month.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_month.strftime("%Y-%m-%d %H:%M:%S")}'")
+      posts = posts.order("created_at DESC").all
+
+      @posts = [nil] 
+      1.upto(@day.end_of_month.day) do |day|
+        @posts[day] = []
+      end
+      posts.each do|post|
+        day = post.created_at.strftime('%d')
+        @posts[day.to_i] << post if post.official?
+      end
+      @prev = @day - 1.month
+      @next = @day + 1.month
     rescue => e
       logger.error e.message
       return head :not_found

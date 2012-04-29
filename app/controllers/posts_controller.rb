@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         opts = {
-          :message => @post.event.label + " http://kintain.herokuapp.com #kintain"
+          :message => @post.event.label + " http://kintain.herokuapp.com/posts/#{@post.id} #kintain"
         }
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?

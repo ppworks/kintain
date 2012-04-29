@@ -1,4 +1,18 @@
 <% content_for :body_class, ' posts' %>
+<nav>
+  <ul>
+    <li>
+    <%= link_to user_day_posts_path(:user_id => @user.id, :year => @prev.strftime('%Y'), :month => @prev.strftime('%m'), :day => @prev.strftime('%d')) do %>
+        <%= image_tag 'prev.png' %>
+      <% end %>
+    </li>
+    <li>
+      <%= link_to user_day_posts_path(:user_id => @user.id, :year => @next.strftime('%Y'), :month => @next.strftime('%m'), :day => @next.strftime('%d')) do %>
+        <%= image_tag 'next.png' %>
+      <% end %>
+    </li>
+  </ul>
+</nav>
 <h1><%= @day.strftime(t 'date_format_day') %></h1>
 <div>
   <%= link_to @day.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m')) %>

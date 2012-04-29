@@ -5,6 +5,8 @@ class Users::PostsController < ApplicationController
     @posts = @posts.where("created_at >= ?", @day.beginning_of_day)
     @posts = @posts.where("created_at <= ?", @day.end_of_day)
     @posts = @posts.order("created_at ASC").all
+    @prev = @day - 1.day
+    @next = @day + 1.day
   end 
 
   def month

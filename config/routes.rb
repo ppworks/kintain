@@ -16,6 +16,5 @@ P4dhack::Application.routes.draw do
   get '/users/:user_id/posts/:year/:month' => 'users::posts#month', :as => :user_month_posts, :year => /\d+/, :month => /\d+/
   get '/users/:user_id/posts/:year' => 'users::posts#year', :as => :user_year_posts, :year => /\d+/
 
-#  root :to => 'pages#index'
   root :to => 'posts#new'
 end

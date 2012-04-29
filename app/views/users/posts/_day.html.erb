@@ -7,10 +7,10 @@
   <% @posts.each do|post| %>
     <li>
       <section>
-      <h1><%= post.event.label %></h1>
       <time datetime="<%= post.created_at %>">
-        <%= post.created_at.strftime(t 'date_format_full') %>
+        <%= post.created_at.strftime(t 'date_format_time') %>
       </time>
+      <%= post.event.label %>
       </section>
     </li>
   <% end %>

@@ -15,6 +15,6 @@ class Post < ActiveRecord::Base
 
   def self.enough? posts
     event_ids = posts.map{|post|post.event_id}.uniq.sort
-    event_ids == OFFICIAL_IDS
+    event_ids.include?(1) && event_ids.include?(4)
   end
 end

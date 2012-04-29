@@ -1,10 +1,28 @@
 body.posts {
+  ul.posts {
+    padding: 0;
+    >li {
+      padding: 0;
+      list-style: none;
+      >section {
+        >* {
+          display: inline-block;
+        }
+        >h2 {
+          border: 1px solid #b3b3b3;
+          padding: 5px;
+          width: 57px;
+          text-align: center;
+        }
+      }
+    } 
+  }
   ul.charts {
     position: relative;
-    width: 320px;
-    height: 57px;
+    width: 240px;
+    height: 23px;
     padding: 0;
-    background: blue;
+    background: #464ae5;
     &.none {
       background: grey;
     }
@@ -12,21 +30,18 @@ body.posts {
       position: absolute;
       display: inline-block;
       top: 0;
-      height: 57px;
+      height: 23px;
       &.event1 {
-        background: blue;
+        background: #464ae5;
       }
       &.event2 {
-        background: green;
+        background: #ffdf04;
       }
       &.event3 {
-        background: red;
+        background: #ff1a1a;
       }
       &.event4 {
-        background: green;
-      }
-      &.event5 {
-        background: yellow;
+        background: #ffdf04;
       }
     }
   } 

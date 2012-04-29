@@ -31,22 +31,23 @@ body.posts {
       &:not(:last-child) {
         border-bottom: 1px solid #b3b3b3;
       }
-      >section {
-        >* {
-          display: inline-block;
-        }
-        >h2 {
-          border: 3px solid #b3b3b3;
-          border-radius: 10px;
-          padding: 5px;
-          width: 36px;
-          height: 36px;
-          text-align: center;
-
-          background: #fff;
-        }
-      }
+      
     } 
+  }
+  section.chart {
+    >* {
+      display: inline-block;
+    }
+    >h2 {
+      border: 3px solid #b3b3b3;
+      border-radius: 10px;
+      padding: 5px;
+      width: 36px;
+      height: 36px;
+      text-align: center;
+
+      background: #fff;
+    }
   }
   ul.charts {
     position: relative;

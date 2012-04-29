@@ -18,7 +18,7 @@
   <ul class="posts">
   <% @posts[1..@posts.size].each_with_index do|posts, i| %>
     <li>
-      <section>
+      <section class="chart">
       <h2><%=i + 1%></h2>
       <%= link_to user_day_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m'), :day => (i+1)) do %>
         <ul class="charts <%=Post.enough?(posts) ? '' : 'none'%>">

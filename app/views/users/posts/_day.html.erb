@@ -18,6 +18,17 @@
   <%= link_to @day.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m')) %>
 </div>
 <% if @posts.present? %>
+  <section class="chart">
+  <h2><%=@day.day%></h2>
+  <ul class="charts <%=Post.enough?(@posts) ? '' : 'none'%>">
+    <% if Post.enough?(@posts) %>
+      <% @posts.reverse.each do|post| %>
+        <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+  </section>
   <ul class="posts">
   <% @posts.each do|post| %>
     <li>

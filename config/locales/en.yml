@@ -10,7 +10,7 @@ en:
   shared:
     _login_button:
       description: 
-        new: "Login with facebook or twitter account to xxx."
+        new_html: "Please tell me 'pizza' at 10 times."
         add: "you can connected other provider's account."
       facebook:
         new: "Login with Facebook account"

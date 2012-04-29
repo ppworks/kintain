@@ -1,3 +1,8 @@
+*{
+	margin:0;
+	padding:0;
+}
+
 p {
   word-wrap: break-word;
 }
@@ -23,5 +28,72 @@ ul.providers {
 .twtr-widget .twtr-img img {
   width: auto;
   height: auto;
+}
+
+body{
+	background: image-url("bg.gif") repeat center top;
+	#overlay{
+		background: image-url("bg_overlay.png") repeat-x center top transparent;
+		min-height:833px;
+		#wrapper{
+			width:640px;
+			margin:0 auto;
+		}
+	}
+}
+
+.login{
+	#logo_l{
+		padding: 48px 0 0 53px;
+	}
+	ul.loginbtns{
+		padding-top:46px;
+		padding-left:49px;
+		list-style:none;
+		overflow:hidden;
+		>li{
+			width:171px;
+			padding-right:18px;
+			float:left;
+			font-size:0;
+			line-height:0;
+			a{
+				text-decoration:none;
+				color:#333333;
+			}
+			a:hover{
+				text-decoration:underline;
+			}
+			p.logintext{
+				font-size:14px;
+				line-height:1.4;
+				padding:0 1em;
+				color:#333333;
+				text-align: center;
+			}
+		}
+	}
+
+	.description{
+		border-radius: 8px;        /* CSS3草案 */  
+		-webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
+		-moz-border-radius: 8px;   /* Firefox用 */  
+		clear:both;
+		background-color:#000;
+		width:500px;
+		margin:50px auto 0;
+		color:#fff;
+		padding:20px;
+	}
+
+}
+
+
+ul.events{
+	list-style:none;
+	>li{
+		padding-bottom:14px;
+		cursor: pointer;
+	}
 }
 

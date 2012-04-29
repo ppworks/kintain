@@ -10,7 +10,10 @@ ja:
   shared:
     _login_button:
       description: 
-        new: "FacebookまたはTwitterアカウントでログインすることで〜"
+        new_html: "ピザって10回言ってみて？<br>
+        ぴざぴざぴざぴざぴざぴざぴざぴざぴざぴざ<br>
+        <br>
+        ほーら、ピザが食べたくなってきた！"
         add: "更に別のアカウントと紐付けることも可能です。"
       facebook:
         new: "Facebookアカウントでログイン"

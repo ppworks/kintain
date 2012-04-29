@@ -22,18 +22,20 @@
   <%= yield :head %>
 </head>
 <body class="<%= yield :body_class %>">
-  <header>
-    <nav>
-      <ul>
-        <% if user_signed_in? %>
-          <li><%= link_to t('.nav.mypage'), current_user_path %></li>
-          <li><%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </header>
+	<div id="overlay">
+		<div id="wrapper">
+			<header>
+			<% if user_signed_in? %>
+				<%= image_tag("logo_s.png") %>
+				<%= render 'users/user', :user => current_user %>
+				<%= link_to current_user.name, current_user_path%>
+
+			<% end %>
+		</header>
 <%= yield %>
 <%= javascript_include_tag "application" %>
 <%= render 'shared/fb_load_js' %>
+</div>
+</div>
 </body>
 </html>

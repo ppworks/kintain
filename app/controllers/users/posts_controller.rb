@@ -13,8 +13,8 @@ class Users::PostsController < ApplicationController
     @day = Time.parse "#{params[:year]}-#{params[:month]}-01"
     
     posts = Post.where(:user_id => @user.id)
-    posts = posts.where("created_at >= ?", @day.beginning_of_day)
-    posts = posts.where("created_at <= ?", @day.end_of_day)
+    posts = posts.where("created_at >= ?", @day.beginning_of_month)
+    posts = posts.where("created_at <= ?", @day.end_of_month)
     posts = posts.order("created_at DESC").all
 
     @posts = [nil] 

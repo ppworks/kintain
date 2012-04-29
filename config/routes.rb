@@ -13,8 +13,8 @@ P4dhack::Application.routes.draw do
   delete '/users/current' => 'users#destroy', :as => :destory_current_user
 
   get '/users/:user_id/posts/:year/:month/:day' => 'users::posts#day', :as => :user_day_posts, :year => /\d+/, :month => /\d+/, :day => /\d+/
-  get '/users/:user_id/posts/:year/:month' => 'users::posts#month', :as => :user_day_posts, :year => /\d+/, :month => /\d+/
-  get '/users/:user_id/posts/:year' => 'users::posts#year', :as => :user_day_posts, :year => /\d+/
+  get '/users/:user_id/posts/:year/:month' => 'users::posts#month', :as => :user_month_posts, :year => /\d+/, :month => /\d+/
+  get '/users/:user_id/posts/:year' => 'users::posts#year', :as => :user_year_posts, :year => /\d+/
 
   root :to => 'pages#index'
 end

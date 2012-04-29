@@ -6,5 +6,6 @@ class CreatePosts < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :posts, [:user_id], :name => :idx_user_id_on_posts
   end
 end

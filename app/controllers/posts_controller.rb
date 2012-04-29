@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-    redirect_to user_path(:provider => @post.user.default_provider, :user_key => @post.user.user_key)
+    redirect_to user_path(:provider => @post.user.default_provider.name, :user_key => @post.user.user_key)
   end
 
   # GET /posts/new

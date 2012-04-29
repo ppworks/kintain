@@ -12,14 +12,16 @@
     <li>
       <section>
       <h2><%=i + 1%></h2>
-      <ul class="charts <%=Post.enough?(posts) ? '' : 'none'%>">
-        <% if Post.enough?(posts) %>
-          <% posts.each do|post| %>
-            <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
-            </li>
+      <%= link_to user_day_posts_path(:year => @day.strftime('%Y'), :month => @day.strftime('%m'), :day => (i+1)) do %>
+        <ul class="charts <%=Post.enough?(posts) ? '' : 'none'%>">
+          <% if Post.enough?(posts) %>
+            <% posts.each do|post| %>
+              <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
       </section>
     </li>
   <% end %>

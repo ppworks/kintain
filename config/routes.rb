@@ -1,4 +1,6 @@
 P4dhack::Application.routes.draw do
+  resources :posts
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
   devise_scope :user do
     match '/users/sign_out(.:format)', {:action=>"destroy", :controller=>"devise/sessions", :via => :delete, :as => :destroy_user_session }

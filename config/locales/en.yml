@@ -1,5 +1,8 @@
 en:
-  date_format: "%H:%M %d %b %Y"
+  date_format_full: "%H:%M %d %b %Y"
+  date_format_time: "%H:%M"
+  date_format_day: "%d %b %Y"
+  date_format_month: "%b %Y"
   layouts:
     application:
       nav:

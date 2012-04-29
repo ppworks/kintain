@@ -1,5 +1,8 @@
 ja:
-  date_format: "%Y/%m/%d %H:%m"
+  date_format_full: "%Y年%m月%d日 %H:%M"
+  date_format_time: "%H:%m"
+  date_format_day: "%Y年%m月%d"
+  date_format_month: "%Y年%m月"
   layouts:
     application:
       nav:

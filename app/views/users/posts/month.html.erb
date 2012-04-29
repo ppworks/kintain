@@ -1,4 +1,4 @@
-<h1><%= @day.strftime(t 'date_format_day') %></h1>
+<h1><%= @day.strftime(t 'date_format_month') %></h1>
 <% if @posts.present? %>
   <ul>
   <% @posts.each do|post| %>
@@ -6,7 +6,7 @@
       <section>
       <h1><%= post.event.label %></h1>
       <time datetime="<%= post.created_at %>">
-        <%= post.created_at.strftime(t 'date_format_full') %>
+        <%= post.created_at.strftime(t 'date_format_time') %>
       </time>
       </section>
     </li>

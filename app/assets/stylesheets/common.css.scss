@@ -91,9 +91,29 @@ body{
 
 ul.events{
 	list-style:none;
+	padding-left:50px;
 	>li{
 		padding-bottom:14px;
 		cursor: pointer;
 	}
 }
 
+header{
+	padding-top:50px;
+	padding-bottom:39px;
+	overflow:hidden;
+	#logo_s{
+		float:left;
+		width:160px;
+		padding-left:50px;
+	}
+	#currentuserstatus{
+		float:right;
+		padding-right:50px;
+		img.face{
+			width:48px;
+			height:48px;
+		}
+	}
+
+}

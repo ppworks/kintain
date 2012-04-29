@@ -24,14 +24,15 @@
 <body class="<%= yield :body_class %>">
 	<div id="overlay">
 		<div id="wrapper">
-			<header>
 			<% if user_signed_in? %>
-				<%= image_tag("logo_s.png") %>
-				<%= render 'users/user', :user => current_user %>
-				<%= link_to current_user.name, current_user_path%>
-
-			<% end %>
+			<header>
+				<div id="logo_s"><%= image_tag("logo_s.png") %></div>
+				<div id="currentuserstatus">
+					<%= render 'users/user', :user => current_user %>
+					<%= link_to current_user.name, current_user_path%>
+				</div>
 		</header>
+			<% end %>
 <%= yield %>
 <%= javascript_include_tag "application" %>
 <%= render 'shared/fb_load_js' %>

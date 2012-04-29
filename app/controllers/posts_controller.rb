@@ -4,8 +4,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    day = Time.current
     post = Post.find(params[:id])
+    day = post.created_at
     redirect_to user_day_posts_path(:user_id => post.user_id, :year => day.year, :month => day.month, :day => day.day)
   end
 

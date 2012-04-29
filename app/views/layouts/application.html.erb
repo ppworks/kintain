@@ -36,7 +36,7 @@
 			<header>
 				<div id="logo_s"><%= link_to image_tag("logo_s.png"), root_path %></div>
 				<div id="currentuserstatus">
-					<%= render 'users/user', :user => current_user %>
+          <%= image_tag current_user.image, :class => :face %>
 					<%= link_to current_user.name, current_user_path%>
           <%= link_to t('.nav.logout'), destroy_user_session_path, :method => :delete %>
 				</div>

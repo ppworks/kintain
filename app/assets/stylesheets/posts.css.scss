@@ -2,19 +2,45 @@ body.posts {
   h1 {
     text-align: center;
   }
+  nav {
+    ul {
+      li {
+        list-style: none;
+        &:first-child {
+          margin: 0 0 0 150px;
+          float: left;
+          background: image-url('prev.png') no-repeat 0,0;
+          width: 59px;
+          height: 54px;
+          text-indent: -9999px;
+        }
+        &:last-child {
+          margin: 0 150px 0 0;
+          float: right;
+          background: image-url('next.png') no-repeat 0,0;
+          width: 59px;
+          height: 54px;
+          text-indent: -9999px;
+        }
+      }
+    }
+  }
   ul.posts {
     padding: 0;
+    background: #fff;
     >li {
       padding: 5px;
       margin-top: 15px;
       list-style: none;
-      background: #fff;
+      &:not(:last-child) {
+        border-bottom: 1px solid #b3b3b3;
+      }
       >section {
         >* {
           display: inline-block;
         }
         >h2 {
-          border: 1px solid #b3b3b3;
+          border: 3px solid #b3b3b3;
           border-radius: 10px;
           padding: 5px;
           width: 36px;

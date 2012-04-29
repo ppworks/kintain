@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
-    redirect_to user_path(:provider => @post.user.default_provider.name, :user_key => @post.user.user_key)
+    day = Time.current
+    post = Post.find(params[:id])
+    redirect_to user_day_posts_path(:user_id => post.user_id, :year => day.year, :month => day.month, :day => day.day)
   end
 
   # GET /posts/new

@@ -1,6 +1,6 @@
 class Users::PostsController < ApplicationController
   def day
-    @day = Time.parse "#{params[:year]}-#{params[:month]}-#{params[:day]}T00:00:00+0900"
+    @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-#{params[:day]}"
     @posts = Post.where(:user_id => @user.id)
     @posts = @posts.where("created_at >= ?", @day.beginning_of_day)
     @posts = @posts.where("created_at <= ?", @day.end_of_day)
@@ -10,7 +10,7 @@ class Users::PostsController < ApplicationController
   end 
 
   def month
-    @day = Time.parse "#{params[:year]}-#{params[:month]}-01T00:00:00+0900"
+    @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-01"
     
     posts = Post.where(:user_id => @user.id)
     posts = posts.where("created_at >= ?", @day.beginning_of_month)

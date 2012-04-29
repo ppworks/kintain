@@ -23,3 +23,9 @@ en:
         label: "delete your account"
         description: "If you withdraw, your information all delete. Are you really want to withdraw?"
         completed: "your account was completely deleted."
+  event:
+    records:
+      1: "家を出た"
+      2: "会社着いた"
+      3: "会社を出た"
+      4: "家着いた"

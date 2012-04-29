@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120428122803) do
+ActiveRecord::Schema.define(:version => 20120429022746) do
+
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.integer  "priority"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "events", ["priority"], :name => "idx_priority_on_events"
 
   create_table "providers", :force => true do |t|
     t.string   "name"

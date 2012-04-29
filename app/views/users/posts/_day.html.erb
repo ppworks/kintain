@@ -1,9 +1,10 @@
+<% content_for :body_class, ' posts' %>
 <h1><%= @day.strftime(t 'date_format_day') %></h1>
 <div>
   <%= link_to @day.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m')) %>
 </div>
 <% if @posts.present? %>
-  <ul>
+  <ul class="posts">
   <% @posts.each do|post| %>
     <li>
       <section>

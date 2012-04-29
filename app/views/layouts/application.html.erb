@@ -20,6 +20,14 @@
   <script src="//platform.twitter.com/widgets.js"></script>
   <%= render 'shared/ga' %>
   <%= yield :head %>
+  <%= render 'shared/og_graph', {
+    title: '勤怠戦隊キンタイン',
+    type: "website",
+    url: 'http://kintain.herokuapp.com/images/logo.png',
+    image: '',
+    description: "気軽にソーシャル勤怠管理するなら、勤怠船隊へお任せ！",
+  }
+  %>
 </head>
 <body class="<%= yield :body_class %>">
 	<div id="overlay">

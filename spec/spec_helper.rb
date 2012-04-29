@@ -50,3 +50,10 @@ Spork.each_run do
   Dir[Rails.root.join("spec/factories/**/*.rb")].each{|f| load f}
 end
 
+def ancestors_should_include ancestors
+  describe 'ancestors' do
+    ancestors.each do |ancestor|
+      it {subject.class.ancestors.should be_include ancestor}
+    end
+  end
+end

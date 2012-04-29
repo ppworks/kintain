@@ -1,6 +1,6 @@
 <%= render 'shared/login_button'%>
+<%= render 'users/posts/day' %>
+
 <section class="withdraw">
 <%= link_to t('.withdraw.label'), destory_current_user_path, :method => :delete, :confirm => t('.withdraw.description'), :class => "btn btn-danger"%>
 </section>
-
-<%= render 'users/posts/day' %>

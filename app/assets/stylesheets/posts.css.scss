@@ -1,25 +1,34 @@
 body.posts {
+  h1 {
+    text-align: center;
+  }
   ul.posts {
     padding: 0;
     >li {
-      padding: 0;
+      padding: 5px;
+      margin-top: 15px;
       list-style: none;
+      background: #fff;
       >section {
         >* {
           display: inline-block;
         }
         >h2 {
           border: 1px solid #b3b3b3;
+          border-radius: 10px;
           padding: 5px;
-          width: 57px;
+          width: 36px;
+          height: 36px;
           text-align: center;
+
+          background: #fff;
         }
       }
     } 
   }
   ul.charts {
     position: relative;
-    width: 240px;
+    width: 570px;
     height: 23px;
     padding: 0;
     background: #464ae5;

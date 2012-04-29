@@ -32,7 +32,6 @@
 <body class="<%= yield :body_class %>">
 	<div id="overlay">
 		<div id="wrapper">
-      <%=render 'shared/sns_buttons', :url => 'http://kintain.herokuapp.com' %>
 			<% if user_signed_in? %>
 			<header>
 				<div id="logo_s"><%= link_to image_tag("logo_s.png"), root_path %></div>
@@ -51,6 +50,7 @@
     <%= link_to 'kintain', 'https://github.com/ppworks/kintain'%> &copy; <%= link_to 'kkotaro0111', 'http://twitter.com/kkotaro0111' %> &amp; <%= link_to 'ppworks', 'http://twitter.com/ppworks' %> <%=Time.current.year%>
     powered by <%= link_to 'heroku', 'http://heroku.com' %>
   </p>
+  <%=render 'shared/sns_buttons', :url => 'http://kintain.herokuapp.com' %>
 </footer>
 </div>
 </div>

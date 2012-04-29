@@ -1,3 +1,4 @@
+<% content_for :body_class, ' post_form' %>
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -10,16 +11,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :event_id %><br />
-    <%= f.number_field :event_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <ul class="events">
+    <% @events.each do|event| %>
+      <li>
+        <%= image_tag("#{I18n.locale}/event_#{event.id}.png", :alt => event.label, :title => event.label, :'data-id' => event.id) %>
+      </li>
+    <% end %>
+  </ul>
+  <%= f.hidden_field :event_id %>
 <% end %>

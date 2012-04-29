@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   # GET /posts/new.json
   def new
     @post = Post.new
+    @events = Event.all
 
     respond_to do |format|
       format.html # new.html.erb

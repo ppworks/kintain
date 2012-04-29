@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   
   def current
     @user = User.find current_user.id
+    @day = Time.current
+    @posts = Post.where(:user_id => @user.id)
+    @posts = @posts.where("created_at >= '#{@day.beginning_of_day.strftime("%Y-%m-%d %H:%M:%S")}' AND created_at <= '#{@day.end_of_day.strftime("%Y-%m-%d %H:%M:%S")}'")
+    @posts = @posts.order("created_at ASC").all
   end
   
   def show

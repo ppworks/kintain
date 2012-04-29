@@ -52,7 +52,7 @@ class PostsController < ApplicationController
         }
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to current_user_path }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }

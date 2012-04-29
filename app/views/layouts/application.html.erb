@@ -26,7 +26,7 @@
 		<div id="wrapper">
 			<% if user_signed_in? %>
 			<header>
-				<div id="logo_s"><%= image_tag("logo_s.png") %></div>
+				<div id="logo_s"><%= image_tag("logo_s.png"), root_path %></div>
 				<div id="currentuserstatus">
 					<%= render 'users/user', :user => current_user %>
 					<%= link_to current_user.name, current_user_path%>

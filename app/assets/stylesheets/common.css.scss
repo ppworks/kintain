@@ -73,19 +73,18 @@ body{
 			}
 		}
 	}
+}
 
-	.description{
-		border-radius: 8px;        /* CSS3草案 */  
-		-webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
-		-moz-border-radius: 8px;   /* Firefox用 */  
-		clear:both;
-		background-color:#000;
-		width:500px;
-		margin:50px auto 0;
-		color:#fff;
-		padding:20px;
-	}
-
+.description{
+  border-radius: 8px;        /* CSS3草案 */  
+  -webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
+  -moz-border-radius: 8px;   /* Firefox用 */  
+  clear:both;
+  background-color:#000;
+  width:500px;
+  margin:50px auto 0;
+  color:#fff;
+  padding:20px;
 }
 
 

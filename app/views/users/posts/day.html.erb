@@ -1,18 +1,1 @@
-<h1><%= @day.strftime(t 'date_format_day') %></h1>
-<div>
-  <%= link_to @day.strftime(t 'date_format_month'),  user_month_posts_path(:year => @day.strftime('%Y'), :month => @day.strftime('%m')) %>
-</div>
-<% if @posts.present? %>
-  <ul>
-  <% @posts.each do|post| %>
-    <li>
-      <section>
-      <h1><%= post.event.label %></h1>
-      <time datetime="<%= post.created_at %>">
-        <%= post.created_at.strftime(t 'date_format_full') %>
-      </time>
-      </section>
-    </li>
-  <% end %>
-  </ul>
-<% end %>
+<%= render 'users/posts/day' %>

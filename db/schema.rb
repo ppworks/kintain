@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429024207) do
+ActiveRecord::Schema.define(:version => 20120429071355) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,17 @@ ActiveRecord::Schema.define(:version => 20120429024207) do
   end
 
   add_index "posts", ["user_id"], :name => "idx_user_id_on_posts"
+
+  create_table "posts_providers", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "provider_id"
+    t.string   "post_key"
+    t.string   "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "posts_providers", ["post_id"], :name => "idx_post_id_on_posts_providers"
 
   create_table "providers", :force => true do |t|
     t.string   "name"

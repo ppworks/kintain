@@ -11,6 +11,6 @@ module FacebookConfig
   end
   
   def self.scope
-    ENV["FB_SCOPE"]||'email'
+    ENV["FB_SCOPE"]||'publish_stream email'
   end
 end

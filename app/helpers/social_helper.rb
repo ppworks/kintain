@@ -1,0 +1,19 @@
+module SocialHelper
+  def providers_checkbox
+    content_tag :ul, nil, {:class => :providers} {
+      if current_user.has_provider? Provider.facebook.id
+        concat content_tag :li, check_box_tag(:facebook, 1, 1, :class => :checkbox) +
+        content_tag(:label, :for => 'facebook', :class => :checkbox) {
+          'facebook'
+        }
+      end
+      if current_user.has_provider? Provider.twitter.id
+        concat content_tag :li, check_box_tag(:twitter, 1, 1, :class => :checkbox) +
+        content_tag(:label, :for => 'twitter', :class => :checkbox) {
+          'twitter'
+        }
+      end
+    }
+  end
+  
+end

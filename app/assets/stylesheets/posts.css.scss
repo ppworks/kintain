@@ -9,18 +9,14 @@ body.posts {
         &:first-child {
           margin: 0 0 0 150px;
           float: left;
-          background: image-url('prev.png') no-repeat 0,0;
           width: 59px;
           height: 54px;
-          text-indent: -9999px;
         }
         &:last-child {
           margin: 0 150px 0 0;
           float: right;
-          background: image-url('next.png') no-repeat 0,0;
           width: 59px;
           height: 54px;
-          text-indent: -9999px;
         }
       }
     }

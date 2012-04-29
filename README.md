@@ -1,8 +1,16 @@
-# [#p4dhack](https://twitter.com/?q=#!/search/%23p4dhack)用repository
+# 勤怠戦隊キンタイン
+
+家を出た、会社へ着いた。会社を出た、家へ着いただけを簡単に管理する勤怠システム。
+
+(http://kintain.herokuapp.com/](http://kintain.herokuapp.com/)
+
+
+# ライセンス
+
+Creative Commons — 表示-非営利-継承[http://creativecommons.org/licenses/by-nc-sa/2.1/jp/]
+
 
 # local検証用の各種SNSアプリケーションを作成する
-
-## facebook アプリ作成
 
 [facebook DEVELOPERS](https://developers.facebook.com/apps)から作成する。
 

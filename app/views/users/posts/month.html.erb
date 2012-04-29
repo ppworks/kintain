@@ -2,7 +2,8 @@
 <h1><%= @day.strftime(t 'date_format_month') %></h1>
 <nav>
   <ul>
-    
+    <li><%= link_to @prev.strftime(t 'date_format_month'),  user_month_posts_path(:year => @prev.strftime('%Y'), :month => @prev.strftime('%m')) %>
+    <li><%= link_to @next.strftime(t 'date_format_month'),  user_month_posts_path(:year => @next.strftime('%Y'), :month => @next.strftime('%m')) %>
   </ul>
 </nav>
 <% if @posts.present? %>

@@ -21,9 +21,8 @@ class Users::PostsController < ApplicationController
       day = post.created_at.strftime('%d')
       @posts[day.to_i] << post if post.official?
     end
-
-    @min = 0
-    @max = 24*60*60
+    @prev = @day - 1.month
+    @next = @day + 1.month
   end
 
   def year

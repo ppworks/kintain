@@ -4,10 +4,10 @@ class UsersController < ApplicationController
   def current
     @user = User.find current_user.id
     @day = Time.current
-    @posts = Post.where(:user_id => @user.id)
-    @posts = @posts.where("created_at >= ?", @day.beginning_of_day)
-    @posts = @posts.where("created_at <= ?", @day.end_of_day)
-    @posts = @posts.order("created_at ASC").all
+    @posts = Post
+      .where(:user_id => @user.id)
+      .one_day(@day)
+      .all 
     @prev = @day - 1.day
     @next = @day + 1.day
   end
@@ -16,11 +16,10 @@ class UsersController < ApplicationController
     begin
       @user = User.find_by_path params[:provider], params[:user_key]
       @day = Time.current 
-      
-      posts = Post.where(:user_id => @user.id)
-      posts = posts.where("created_at >= ?", @day.beginning_of_month)
-      posts = posts.where("created_at <= ?", @day.end_of_month)
-      posts = posts.order("created_at DESC").all
+      posts = Post
+        .where(:user_id => @user.id)
+        .one_month(@day)
+        .all
 
       @posts = [nil] 
       1.upto(@day.end_of_month.day) do |day|

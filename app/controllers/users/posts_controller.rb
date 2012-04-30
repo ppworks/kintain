@@ -2,9 +2,10 @@ class Users::PostsController < ApplicationController
   def day
     @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-#{params[:day]}"
     @posts = Post.where(:user_id => @user.id)
-    @posts = @posts.where("created_at >= ?", @day.beginning_of_day)
-    @posts = @posts.where("created_at <= ?", @day.end_of_day)
-    @posts = @posts.order("created_at ASC").all
+    @posts = Post
+      .where(:user_id => @user.id)
+      .one_day(@day)
+      .all 
     @prev = @day - 1.day
     @next = @day + 1.day
   end 
@@ -13,10 +14,10 @@ class Users::PostsController < ApplicationController
     @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-01"
     
     posts = Post.where(:user_id => @user.id)
-    posts = posts.where("created_at >= ?", @day.beginning_of_month)
-    posts = posts.where("created_at <= ?", @day.end_of_month)
-    posts = posts.order("created_at DESC").all
-
+    posts = Post
+      .where(:user_id => @user.id)
+      .one_month(@day)
+      .all
     @posts = [nil] 
     1.upto(@day.end_of_month.day) do |day|
       @posts[day] = []

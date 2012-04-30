@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        url = Rails.application.routes.url_helpers.post_url(@post.id, :host => request.domain)
+        url = Rails.application.routes.url_helpers.post_url(@post.id, :host => request.host)
         opts = {
           :message => @post.event.label + " #{url} #{ENV['HASH_TAG']}"
         }

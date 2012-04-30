@@ -2,7 +2,7 @@
 
 家を出た、会社へ着いた。会社を出た、家へ着いただけを簡単に管理する勤怠システム。
 
-(http://kintain.herokuapp.com/](http://kintain.herokuapp.com/)
+[http://kintain.herokuapp.com/](http://kintain.herokuapp.com/)
 
 
 # ライセンス

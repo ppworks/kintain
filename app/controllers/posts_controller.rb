@@ -29,8 +29,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        url = Rails.application.routes.url_helpers.post_url(@post.id, :host => request.domain)
         opts = {
-          :message => @post.event.label + " http://kintain.herokuapp.com/posts/#{@post.id} #kintain"
+          :message => @post.event.label + " #{url} #{ENV['HASH_TAG']}"
         }
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
         SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?

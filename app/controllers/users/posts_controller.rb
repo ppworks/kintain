@@ -18,14 +18,7 @@ class Users::PostsController < ApplicationController
       .where(:user_id => @user.id)
       .one_month(@day)
       .all
-    @posts = [nil] 
-    1.upto(@day.end_of_month.day) do |day|
-      @posts[day] = []
-    end
-    posts.each do|post|
-      day = post.created_at.strftime('%d')
-      @posts[day.to_i] << post if post.official?
-    end
+    @posts = Post.convert_monthly_chart @day, posts 
     @prev = @day - 1.month
     @next = @day + 1.month
   end

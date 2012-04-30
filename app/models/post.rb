@@ -29,4 +29,16 @@ class Post < ActiveRecord::Base
     event_ids = posts.map{|post|post.event_id}.uniq.sort
     event_ids.include?(1) && event_ids.include?(4)
   end
+
+  def self.convert_monthly_chart date, posts
+      res = [nil] 
+      1.upto(date.end_of_month.day) do |day|
+        res[day] = []
+      end
+      posts.each do|post|
+        day = post.created_at.strftime('%d')
+        res[day.to_i] << post if post.official?
+      end
+      res
+  end
 end

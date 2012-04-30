@@ -3,27 +3,27 @@ class UsersController < ApplicationController
   
   def current
     @user = User.find current_user.id
-    @day = Time.current
+    @date = Time.current
     @posts = Post
       .where(:user_id => @user.id)
-      .one_day(@day)
+      .one_day(@date)
       .all 
-    @prev = @day - 1.day
-    @next = @day + 1.day
+    @prev = @date - 1.day
+    @next = @date + 1.day
   end
   
   def show
     begin
       @user = User.find_by_path params[:provider], params[:user_key]
-      @day = Time.current 
+      @date = Time.current 
       posts = Post
         .where(:user_id => @user.id)
-        .one_month(@day)
+        .one_month(@date)
         .all
 
-      @posts = Post.convert_monthly_chart @day, posts 
-      @prev = @day - 1.month
-      @next = @day + 1.month
+      @posts = Post.convert_monthly_chart @date, posts 
+      @prev = @date - 1.month
+      @next = @date + 1.month
     rescue => e
       logger.error e.message
       return head :not_found

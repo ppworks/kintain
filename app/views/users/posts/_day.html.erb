@@ -13,13 +13,13 @@
     </li>
   </ul>
 </nav>
-<h1><%= @day.strftime(t 'date_format_day') %></h1>
+<h1><%= @date.strftime(t 'date_format_day') %></h1>
 <div>
-  <%= link_to @day.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @day.strftime('%Y'), :month => @day.strftime('%m')) %>
+  <%= link_to @date.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @date.strftime('%Y'), :month => @date.strftime('%m')) %>
 </div>
 <% if @posts.present? %>
   <section class="chart">
-  <h2><%=@day.day%></h2>
+  <h2><%=@date.day%></h2>
   <ul class="charts <%=Post.enough?(@posts) ? '' : 'none'%>">
     <% if Post.enough?(@posts) %>
       <% @posts.reverse.each do|post| %>

@@ -1,25 +1,25 @@
 class Users::PostsController < ApplicationController
   def day
-    @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-#{params[:day]}"
+    @date = Time.zone.parse "#{params[:year]}-#{params[:month]}-#{params[:day]}"
     @posts = Post.where(:user_id => @user.id)
     @posts = Post
       .where(:user_id => @user.id)
-      .one_day(@day)
+      .one_day(@date)
       .all 
-    @prev = @day - 1.day
-    @next = @day + 1.day
+    @prev = @date - 1.day
+    @next = @date + 1.day
   end 
 
   def month
-    @day = Time.zone.parse "#{params[:year]}-#{params[:month]}-01"
+    @date = Time.zone.parse "#{params[:year]}-#{params[:month]}-01"
     
     posts = Post.where(:user_id => @user.id)
     posts = Post
       .where(:user_id => @user.id)
-      .one_month(@day)
+      .one_month(@date)
       .all
-    @posts = Post.convert_monthly_chart @day, posts 
-    @prev = @day - 1.month
-    @next = @day + 1.month
+    @posts = Post.convert_monthly_chart @date, posts 
+    @prev = @date - 1.month
+    @next = @date + 1.month
   end
 end

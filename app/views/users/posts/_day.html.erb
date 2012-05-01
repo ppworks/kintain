@@ -14,7 +14,7 @@
   </ul>
 </nav>
 <h1><%= @date.strftime(t 'date_format_day') %></h1>
-<div>
+<div class="tomonthly">
   <%= link_to @date.strftime(t 'date_format_month'),  user_month_posts_path(:user_id => @user.id, :year => @date.strftime('%Y'), :month => @date.strftime('%m')) %>
 </div>
 <% if @posts.present? %>
@@ -33,10 +33,13 @@
   <% @posts.each do|post| %>
     <li>
       <section>
-      <time datetime="<%= post.created_at %>">
-        <%= post.created_at.strftime(t 'date_format_time') %>
-      </time>
-      <%= post.event.label %>
+	  <%= image_tag("icon_#{post.event.id}.png", :alt => post.event.label, :title => post.event.label, :'data-id' => post.event.id) %>
+	  <p>
+		  <time datetime="<%= post.created_at %>">
+			<%= post.created_at.strftime(t 'date_format_time') %>
+		  </time>
+		  <%= post.event.label %>
+	  </p>
       </section>
     </li>
   <% end %>

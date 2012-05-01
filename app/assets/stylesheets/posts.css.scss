@@ -1,6 +1,8 @@
 body.posts {
   h1 {
     text-align: center;
+	font-size:24px;
+	padding-top:7px;
   }
   nav {
     ul {
@@ -21,20 +23,53 @@ body.posts {
       }
     }
   }
+  .tomonthly{
+	  clear:both;
+	  text-align: center;
+	  a{
+		  color:#4d4d4d;
+		  background-color: #FFF;
+		  padding:1ex 1em;
+		  border:1px solid #4d4d4d;
+		  border-radius: 8px;        /* CSS3草案 */  
+		  -webkit-border-radius: 8px;    /* Safari,Google Chrome用 */  
+		  -moz-border-radius: 8px;   /* Firefox用 */  
+		  text-decoration:none;
+	  }
+	  a:hover{
+		  background-color: #4d4d4d;
+		  color:#fff;
+	  }
+  }
   ul.posts {
     padding: 0;
     background: #fff;
+	margin:0 auto;
+	margin-top: 15px;
+	border:1px solid #4d4d4d;
+	width:538px;
     >li {
-      padding: 5px;
-      margin-top: 15px;
+      padding: 10px 8px 1px 8px;
+	  overflow:hidden;
       list-style: none;
       &:not(:last-child) {
-        border-bottom: 1px solid #b3b3b3;
+	    border-bottom:1px solid #4d4d4d;
       }
+	  p{
+		  font-size:30px;
+		  padding-top:13px;
+		  padding-left:90px;
+	  }
+	  img{
+		  float:left;
+	  }
       
     } 
   }
   section.chart {
+	  padding-bottom:9px;
+	  width:520px;
+	  margin:15px auto 0;
     >* {
       display: inline-block;
     }
@@ -51,7 +86,7 @@ body.posts {
   }
   ul.charts {
     position: relative;
-    width: 570px;
+    width: 450px;
     height: 23px;
     padding: 0;
     background: #464ae5;
@@ -61,7 +96,6 @@ body.posts {
     >li {
       position: absolute;
       display: inline-block;
-      top: 0;
       height: 23px;
       &.event1 {
         background: #464ae5;

@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
 
   def self.enough? posts
     event_ids = posts.map{|post|post.event_id}.uniq.sort
-    event_ids.include?(1) && event_ids.include?(4)
+    (event_ids.include?(1) || event_ids.include?(2)) && (event_ids.include?(3) || event_ids.include?(4))
   end
 
   def self.convert_monthly_chart date, posts

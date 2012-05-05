@@ -16,6 +16,8 @@ class Post < ActiveRecord::Base
     .order("created_at DESC")
   }
 
+  before_create :set_event_name_id
+
   def created_at_to_percent
     times = self.created_at.strftime('%X').split(':')
     (((times[0].to_i * 60 * 60 + times[1].to_i * 60 + times[2].to_i) / (24 * 60 * 60).to_f) * 100).to_i
@@ -40,5 +42,16 @@ class Post < ActiveRecord::Base
         res[day.to_i] << post if post.official?
       end
       res
+  end
+
+  private
+  def set_event_name_id
+    event_name = self.user.event_names.where(:event_id => self.event_id).first
+    if event_name.present?
+      self.event_name_id = event_name_id
+    else
+      self.event_name_id = 0
+    end
+    true
   end
 end

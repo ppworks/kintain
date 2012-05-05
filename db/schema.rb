@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120429071355) do
+ActiveRecord::Schema.define(:version => 20120505142413) do
+
+  create_table "event_names", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.integer  "event_id",   :null => false
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -25,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20120429071355) do
   create_table "posts", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "event_name_id", :null => false
   end
 
   add_index "posts", ["user_id"], :name => "idx_user_id_on_posts"

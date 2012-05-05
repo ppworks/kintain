@@ -13,6 +13,12 @@ module SocialHelper
           'twitter'
         }
       end
+      if current_user.has_provider? Provider.mixi.id
+        concat content_tag :li, check_box_tag(:mixi, 1, 1, :class => :checkbox) +
+        content_tag(:label, :for => 'mixi', :class => :checkbox) {
+          'mixi'
+        }
+      end
     }
   end
   

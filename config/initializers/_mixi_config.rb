@@ -8,6 +8,6 @@ module MixiConfig
   end
   
   def self.scope
-    ENV["MIXI_SCOPE"]||'r_profile r_voice w_voice w_message'
+    ENV["MIXI_SCOPE"]||'r_profile w_voice'
   end
 end

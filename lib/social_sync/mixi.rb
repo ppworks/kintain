@@ -95,7 +95,7 @@ module SocialSync
     # post
     def self.post! token, params
       response = self.fetch_mixi params[:providers_user] do |token_obj|
-        response = token_obj.post('/2/voice/statuses', {:status => params[:message]})
+        response = token_obj.post('/2/voice/statuses/update', {:params => {:status => params[:message]}})
       end
       response = JSON.parse response
       response.instance_eval <<-EVAL
@@ -132,7 +132,7 @@ module SocialSync
     def self.comment! token, params
       post_key = params[:post_key]||raise(ArgumentError, 'luck of params[:post_key]')
       response = self.fetch_mixi params[:providers_user] do |token_obj|
-        response = token_obj.post("/2/voice/replies/create/#{post_key}", {:text => params[:message]})
+        response = token_obj.post("/2/voice/replies/create/#{post_key}", {:params => {:text => params[:message]}})
       end
       response = JSON.parse response
       Artist.logger.info response
@@ -173,22 +173,30 @@ module SocialSync
         MixiConfig.app_secret,
         :site => 'http://api.mixi-platform.com',
         :authorize_url => 'https://mixi.jp/connect_authorize.pl',
-        :access_token_url => 'https://secure.mixi-platform.com/2/token'
+        :token_url => 'https://secure.mixi-platform.com/2/token'
       )
       retry_count = 0
       begin
         access_token = providers_user.access_token
-        token = OAuth2::AccessToken.new(client, access_token)
-        res = yield token
+        token = OAuth2::AccessToken.new(
+          client, access_token, {
+            :refresh_token => providers_user.refresh_token,
+            :mode => :header,
+            :header_format => 'OAuth %s'
+          }
+        )
+        response = yield token
+        res = response.response.env
+        raise unless res[:status].to_i === 200
+        res[:body]
       rescue => e
-        #token = client.web_server.refresh_access_token(providers_user.refresh_token, :grant_type => "refresh_token")
-        
-        token = token.refresh! :refresh_token => providers_user.refresh_token
+        token = token.refresh! 
         providers_user.access_token = token.token
         providers_user.refresh_token = token.refresh_token
         providers_user.save!
         retry_count += 1
         retry if retry_count == 1
+
         raise e
       end
     end

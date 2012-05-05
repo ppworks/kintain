@@ -33,11 +33,16 @@ class PostsController < ApplicationController
         opts = {
           :message => @post.event.label + " #{url} #{ENV['HASH_TAG']}"
         }
-        SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
-        SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?
-        SocialSync.post!(current_user, opts.merge({:provider_id => Provider.mixi.id})) if params[:mixi].present?
-        format.html { redirect_to current_user_path }
-        format.json { render json: @post, status: :created, location: @post }
+        begin
+          SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?
+          SocialSync.post!(current_user, opts.merge({:provider_id => Provider.twitter.id})) if params[:twitter].present?
+          SocialSync.post!(current_user, opts.merge({:provider_id => Provider.mixi.id})) if params[:mixi].present?
+        rescue => e
+          logger.error e
+        ensure
+          format.html { redirect_to current_user_path }
+          format.json { render json: @post, status: :created, location: @post }
+        end
       else
         format.html { render action: "new" }
         format.json { render json: @post.errors, status: :unprocessable_entity }

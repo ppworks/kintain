@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/pivotal-sushi/omniauth-mixi.git
-  revision: daddb070550c4bdec605ead4e5692f76a8fc0049
+  remote: git://github.com/ppworks/omniauth-mixi.git
+  revision: 84b098fed00279550cf9cc5c37097b24c3df1f05
   specs:
     omniauth-mixi (1.0.0)
       omniauth-oauth2 (~> 1.0.0)

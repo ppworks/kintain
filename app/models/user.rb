@@ -165,7 +165,7 @@ class User < ActiveRecord::Base
   def self.find_for_mixi_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.mixi.id, auth['uid'].to_s
     name = auth['info']['name']
-    image = auth['extra']['raw_info']['avatar_url']
+    image = auth['info']['image']
     email = auth['info']['email']||"#{auth['uid']}@mixi.example.com"
     
     if providers_user.nil?

@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   attr_accessible :event_id, :user_id
   belongs_to :event
   belongs_to :user
+  belongs_to :event_name
 
   scope :one_day, lambda{|date|
     where("created_at >= ?", date.beginning_of_day)
@@ -18,6 +19,14 @@ class Post < ActiveRecord::Base
 
   before_create :set_event_name_id
 
+  def label
+    if self.event_name.present?
+      self.event_name.name
+    else
+      self.event.label
+    end
+  end
+  
   def created_at_to_percent
     times = self.created_at.strftime('%X').split(':')
     (((times[0].to_i * 60 * 60 + times[1].to_i * 60 + times[2].to_i) / (24 * 60 * 60).to_f) * 100).to_i

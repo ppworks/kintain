@@ -23,7 +23,7 @@
   <ul class="charts <%=Post.enough?(@posts) ? '' : 'none'%>">
     <% if Post.enough?(@posts) %>
       <% @posts.reverse.each do|post| %>
-        <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.event.label%>">
+        <li class="event<%=post.event_id%>" style="width: <%=post.created_at_to_percent%>%;" data-label="<%=post.label%>">
         </li>
       <% end %>
     <% end %>
@@ -33,12 +33,12 @@
   <% @posts.each do|post| %>
     <li>
       <section>
-	  <%= image_tag("icon_#{post.event.id}.png", :alt => post.event.label, :title => post.event.label, :'data-id' => post.event.id) %>
+	  <%= image_tag("icon_#{post.event.id}.png", :alt => post.label, :title => post.label, :'data-id' => post.event.id) %>
 	  <p>
 		  <time datetime="<%= post.created_at %>">
 			<%= post.created_at.strftime(t 'date_format_time') %>
 		  </time>
-		  <%= post.event.label %>
+		  <%= post.label %>
 	  </p>
       </section>
     </li>

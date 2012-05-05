@@ -31,7 +31,7 @@ class PostsController < ApplicationController
       if @post.save
         url = Rails.application.routes.url_helpers.post_url(@post.id, :host => request.host)
         opts = {
-          :message => @post.event.label + " #{url} #{ENV['HASH_TAG']}"
+          :message => @post.label + " #{url} #{ENV['HASH_TAG']}"
         }
         begin
           SocialSync.post!(current_user, opts.merge({:provider_id => Provider.facebook.id})) if params[:facebook].present?

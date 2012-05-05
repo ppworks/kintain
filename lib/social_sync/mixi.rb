@@ -135,7 +135,6 @@ module SocialSync
         response = token_obj.post("/2/voice/replies/create/#{post_key}", {:params => {:text => params[:message]}})
       end
       response = JSON.parse response
-      Artist.logger.info response
       response.instance_eval <<-EVAL
         def identifier
           "#{response['id']}"
@@ -152,7 +151,6 @@ module SocialSync
         response = token_obj.post("/2/voice/favorites/create/#{post_key}")
       end
       response = JSON.parse response
-      Artist.logger.info response
       response.present?
     end
     

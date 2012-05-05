@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale, :set_user
+  rescue_from Exception, :with => :catch_exceptions
   rescue_from ActiveRecord::RecordNotFound, :with => :catch_not_found
 
   protected
@@ -14,6 +15,11 @@ class ApplicationController < ActionController::Base
 
   def catch_not_found(e)
     render :layout => false, :file => "#{Rails.root}/public/404", :status => 404, :format => :html
+  end
+  
+  def catch_exceptions(e)
+    logger.error e.to_yaml
+        e.backtrace.each { |line| logger.error line }
   end
 
   private

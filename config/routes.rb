@@ -1,5 +1,6 @@
 P4dhack::Application.routes.draw do
   resources :posts, :except => [:index, :edit, :update]
+  resources :event_names, :only => [:index, :create]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }, :skip => [:sessions]
   devise_scope :user do

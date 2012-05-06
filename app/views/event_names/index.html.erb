@@ -1,0 +1,10 @@
+<%=form_tag(:event_names) do %>
+  <ul class="events">
+    <% @event_names.each do|event_name| %>
+      <li>
+        <%=text_field_tag "event_names[#{event_name.event_id}]", event_name.name %>
+      </li>
+    <% end %>
+  </ul>
+  <%=submit_tag%>
+<% end %>

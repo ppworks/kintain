@@ -55,9 +55,9 @@ class Post < ActiveRecord::Base
 
   private
   def set_event_name_id
-    event_name = self.user.event_names.where(:event_id => self.event_id).first
+    event_name = self.user.event_names.where(:event_id => self.event_id).order('id DESC').first
     if event_name.present?
-      self.event_name_id = event_name_id
+      self.event_name_id = event_name.id
     else
       self.event_name_id = 0
     end

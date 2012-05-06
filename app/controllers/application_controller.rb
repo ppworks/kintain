@@ -10,11 +10,14 @@ class ApplicationController < ActionController::Base
   end
   
   def set_user
-    @user = User.find params[:user_id] if params[:user_id].present?
+    return if params[:user_id].nil?
+    @user = User.find params[:user_id]
+    return if current_user.present? && current_user.id == @user.id
+    return render_not_found if @user.scope.name == 'private'
   end
 
   def catch_not_found(e)
-    render :layout => false, :file => "#{Rails.root}/public/404", :status => 404, :format => :html
+    render_not_found
   end
   
   def catch_exceptions(e)
@@ -30,5 +33,9 @@ class ApplicationController < ActionController::Base
     else
       :en
     end
+  end
+
+  def render_not_found
+    render :layout => false, :file => "#{Rails.root}/public/404", :status => 404, :format => :html
   end
 end

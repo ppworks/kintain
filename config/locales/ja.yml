@@ -35,6 +35,12 @@ ja:
         completed: "退会しました。"
       event_names:
         label: "各イベントのラベルを変更する"
+      users:
+        label: "閲覧権限などユーザー設定を変更する"
+      edited: "ユーザー設定を変更しました。"
+    edit:
+      scope_id:
+        description: "投稿の閲覧可能範囲を設定します。"
   event:
     records:
       "1": "家を出た"
@@ -42,6 +48,10 @@ ja:
       "3": "会社を出た"
       "4": "家着いた"
       "5": "ピザ食べた"
+  scope:
+    records:
+      "1": "インターネット全体公開"
+      "2": "自分だけ"
   event_names:
     index:
       created: "イベントラベルを変更しました。"

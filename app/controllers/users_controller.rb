@@ -29,6 +29,17 @@ class UsersController < ApplicationController
       return head :not_found
     end
   end
+
+  def edit
+    @user = User.find current_user.id
+  end
+
+  def update
+    user = User.find current_user.id
+    user.scope_id = params[:scope_id]
+    user.save
+    redirect_to current_user_path, :notice => t('users.current.edited')
+  end
   
   def destroy
     user = User.find current_user.id

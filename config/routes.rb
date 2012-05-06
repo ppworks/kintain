@@ -11,6 +11,8 @@ P4dhack::Application.routes.draw do
   get '/users/current' => 'users#current', :as => :current_user
   get '/users/login' => 'users#login', :as => :login_user
   get '/users/:provider/:user_key' => 'users#show', :as => :user
+  get '/users/edit' => 'users#edit', :as => :edit_user
+  put '/users/update' => 'users#update', :as => :update_user
   delete '/users/current' => 'users#destroy', :as => :destory_current_user
 
   get '/users/:user_id/posts/:year/:month/:day' => 'users::posts#day', :as => :user_day_posts, :year => /\d+/, :month => /\d+/, :day => /\d+/

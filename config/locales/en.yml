@@ -32,6 +32,12 @@ en:
         completed: "your account was completely deleted."
       event_names:
         label: "Update the label for each event."
+      users:
+        label: "Update the user setting."
+      edited: "Update user setting."
+    edit:
+      scope_id:
+        description: "Set readable scope for your posts."
   event:
     records:
       "1": "leave home"
@@ -39,6 +45,10 @@ en:
       "3": "leave office"
       "4": "come home"
       "5": "eat pizza"
+  scope:
+    records:
+      "1": "Public"
+      "2": "Private"
   event_names:
     index:
       created: "Updated event label."

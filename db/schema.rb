@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505142413) do
+ActiveRecord::Schema.define(:version => 20120506075919) do
 
   create_table "event_names", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -76,6 +76,12 @@ ActiveRecord::Schema.define(:version => 20120505142413) do
   add_index "providers_users", ["provider_id", "user_key"], :name => "idx_provider_id_user_key_on_providers_users", :unique => true
   add_index "providers_users", ["user_id"], :name => "idx_user_id_on_providers_users"
 
+  create_table "scopes", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name",                                :null => false
     t.string   "image",                               :null => false
@@ -90,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20120505142413) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+    t.integer  "scope_id",            :default => 1
   end
 
   add_index "users", ["email"], :name => "idx_email_on_users", :unique => true

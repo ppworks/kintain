@@ -5,4 +5,18 @@ body.users {
       list-style: none;
     }
   }
+
+  form#edit_user {
+    margin: 15px 45px;
+    input[type="radio"] {
+      margin: 15px 0 15px 15px;
+    }
+    input[type="submit"] {
+      display: block;
+      margin: 15px auto;
+      padding: 15px;
+      width: 240px;
+      font-size: 24px;
+    }
+  }
 }

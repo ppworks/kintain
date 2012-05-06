@@ -1,0 +1,15 @@
+<% content_for :body_class, ' users' %>
+<%=form_tag(update_user_path, :method => :put, :id => :edit_user) do %>
+  <div>
+    <p>
+      <%= t('users.edit.scope_id.description') %>
+    </p>
+    <% Scope.all.each do |scope| %>
+      <label>
+      <%=radio_button_tag :scope_id, scope.id, current_user.scope_id == scope.id %>
+      <%= t("scope.records.#{scope.id}") %>
+      </label>
+    <% end %>
+  </div>
+  <%=submit_tag t('helpers.submit.submit', :model => '')%>
+<% end %>

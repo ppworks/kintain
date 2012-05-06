@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :providers, :through => :providers_users
   has_many :posts, :dependent => :destroy
   has_many :event_names, :dependent => :destroy
+  belongs_to :scope
   
   def self.find_for_facebook_oauth(auth, current_user = nil)
     providers_user = ProvidersUser.find_by_provider_id_and_user_key Provider.facebook.id, auth['uid'].to_s

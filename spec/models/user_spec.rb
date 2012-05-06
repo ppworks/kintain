@@ -36,4 +36,7 @@ describe User do
   describe 'github login' do
     it { User.find_for_github_oauth(auth, nil).should be_present }
   end
+  describe 'mixi login' do
+    it { User.find_for_mixi_oauth(auth, nil).should be_present }
+  end
 end

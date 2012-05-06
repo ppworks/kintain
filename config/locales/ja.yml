@@ -40,6 +40,10 @@ ja:
       "3": "会社を出た"
       "4": "家着いた"
       "5": "ピザ食べた"
+  event_names:
+    index:
+      created: "イベントラベルを変更しました。"
+      description: "各イベントのラベルを変更出来ます。"
   activerecord:
     attributes:
       event_name:

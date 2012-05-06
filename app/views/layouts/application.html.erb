@@ -44,6 +44,11 @@
         <% end %>
       </header>
   <% end %>
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <%= yield %>
 <%= javascript_include_tag "application" %>
 <%= render 'shared/fb_load_js' %>

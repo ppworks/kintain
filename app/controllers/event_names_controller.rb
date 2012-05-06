@@ -11,7 +11,7 @@ class EventNamesController < ApplicationController
     if errors.present?
       render :index
     else
-      redirect_to event_names_path
+      redirect_to event_names_path, :notice => I18n.t('event_names.index.created')
     end
   end
 end

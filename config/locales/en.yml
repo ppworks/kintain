@@ -37,6 +37,10 @@ en:
       "3": "leave office"
       "4": "come home"
       "5": "eat pizza"
+  event_names:
+    index:
+      created: "Updated event label."
+      description: "You can change label each event."
   activerecord:
     attributes:
       event_name:

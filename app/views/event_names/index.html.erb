@@ -1,7 +1,7 @@
+<% content_for :body_class, ' event_names' %>
 <p class="notice">
   <%= t('.description') %>
 </p>
-<% content_for :body_class, ' event_names' %>
 <%=form_tag(:event_names) do %>
   <ul class="events">
     <% @event_names.each do|event_name| %>

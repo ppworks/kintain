@@ -33,6 +33,8 @@ ja:
         label: "退会"
         description: "退会処理をすると、情報が全て削除されます。本当に退会しますか？"
         completed: "退会しました。"
+      event_names:
+        label: "各イベントのラベルを変更する"
   event:
     records:
       "1": "家を出た"

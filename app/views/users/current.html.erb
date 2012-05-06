@@ -1,3 +1,7 @@
+<% content_for :body_class, ' users' %>
+<ul class="menu">
+  <li><%=link_to t('.event_names.label'), event_names_path %></li>
+</ul>
 <%= render 'shared/login_button'%>
 <%= render 'users/posts/day' %>
 

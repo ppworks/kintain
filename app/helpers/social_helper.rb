@@ -1,5 +1,6 @@
 module SocialHelper
   def providers_checkbox
+    return if current_user.scope.name == 'private'
     content_tag :ul, nil, {:class => :providers} {
       if current_user.has_provider? Provider.facebook.id
         concat content_tag :li, check_box_tag(:facebook, 1, 1, :class => :checkbox) +

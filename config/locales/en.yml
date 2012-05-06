@@ -37,3 +37,7 @@ en:
       "3": "leave office"
       "4": "come home"
       "5": "eat pizza"
+  activerecord:
+    attributes:
+      event_name:
+        name: "label"

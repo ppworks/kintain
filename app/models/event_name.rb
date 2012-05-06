@@ -1,5 +1,6 @@
 class EventName < ActiveRecord::Base
   validates_presence_of :name
+  validates_length_of :name, :in => (1..10)
   attr_accessible :event_id, :name, :user_id
   belongs_to :event
   belongs_to :user
@@ -19,18 +20,20 @@ class EventName < ActiveRecord::Base
   end
 
   def self.update_by_hash hash, user
-    res = {}
+    event_names = []
     self.list(user).each do|event_name|
       event_id = event_name.event_id
       new_name = hash[event_id.to_s]
-      unless event_name.name === new_name 
-        res[event_id] = EventName.create({
+      if event_name.name === new_name 
+        event_names << event_name
+      else
+        event_names << EventName.create({
           :event_id => event_id,
           :user_id => user.id,
           :name => new_name,
         })
       end
     end
-    res
+    event_names
   end
 end

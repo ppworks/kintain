@@ -6,11 +6,12 @@ class EventNamesController < ApplicationController
   end
 
   def create
-    res = EventName.update_by_hash params[:event_names], current_user
-    if res
-      redirect_to event_names_path
+    @event_names = EventName.update_by_hash params[:event_names], current_user
+    errors = @event_names.select{|event_name|event_name.errors.present?}
+    if errors.present?
+      render :index
     else
-      head :ng
+      redirect_to event_names_path
     end
   end
 end

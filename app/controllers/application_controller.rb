@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_locale, :set_user
-  rescue_from Exception, :with => :catch_exceptions
+  #rescue_from Exception, :with => :catch_exceptions
   rescue_from ActiveRecord::RecordNotFound, :with => :catch_not_found
 
   protected

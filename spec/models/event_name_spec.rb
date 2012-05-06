@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe EventName do
+  before do
+    I18n.locale = :en
+  end
   ancestors_should_include [ActiveRecord::Base]
   describe 'self.list method' do
     let(:user) { FactoryGirl.create :user }
@@ -32,13 +35,34 @@ describe EventName do
     let(:hash) { hash = {};Event.all.each{|e|hash[e.id.to_s] = e.label};hash }
     context 'user has no event_names' do
       context 'passed no changed parameter' do
-        it { EventName.update_by_hash(hash, user).should be_empty }
+        subject { EventName.update_by_hash(hash, user) }
+        its([0]) { should be_new_record }
+        its([1]) { should be_new_record }
+        its([2]) { should be_new_record }
+        its([3]) { should be_new_record }
+        its([3]) { should be_new_record }
       end
     end
     context 'user has new event_names' do
-      let(:hash) { {'1' => 'new one'} }
       context 'passed changed parameter' do
-        it { EventName.update_by_hash(hash, user).should be_present }
+        before do
+          hash['1'] = 'new one'
+        end
+        subject { EventName.update_by_hash(hash, user) }
+        its([0]) { should be_persisted }
+        its([1]) { should be_new_record }
+        its([2]) { should be_new_record }
+        its([3]) { should be_new_record }
+        its([4]) { should be_new_record }
+      end
+    end
+    context 'user has invalid new event_names' do
+      context 'passed changed parameter' do
+        before do
+          hash['1'] = 'toooooooooooooo long name'
+        end
+        subject { EventName.update_by_hash(hash, user)[0] }
+        its('errors') { subject[:name][0].should match /is too long/ }
       end
     end
   end

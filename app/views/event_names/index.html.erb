@@ -4,11 +4,12 @@
     <% @event_names.each do|event_name| %>
       <li>
         <section>
+        <div class="error"><%= event_name.errors.full_messages.join(' ') if event_name.errors.present? %></div>
           <%= image_tag("icon_#{event_name.event.id}.png", :alt => event_name.name, :title => event_name.name) %>
           <%=text_field_tag "event_names[#{event_name.event_id}]", event_name.name %>
         </section>
       </li>
     <% end %>
   </ul>
-  <%=submit_tag%>
+  <%=submit_tag t('helpers.submit.submit', :model => '')%>
 <% end %>

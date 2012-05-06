@@ -40,3 +40,7 @@ ja:
       "3": "会社を出た"
       "4": "家着いた"
       "5": "ピザ食べた"
+  activerecord:
+    attributes:
+      event_name:
+        name: "ラベル"

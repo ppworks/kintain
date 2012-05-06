@@ -38,6 +38,9 @@ ja:
       users:
         label: "閲覧権限などユーザー設定を変更する"
       edited: "ユーザー設定を変更しました。"
+      post:
+        new: 
+          label: "新たに勤怠報告する"
     edit:
       scope_id:
         description: "投稿の閲覧可能範囲を設定します。"

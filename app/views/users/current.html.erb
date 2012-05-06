@@ -1,5 +1,6 @@
 <% content_for :body_class, ' users' %>
 <ul class="menu">
+  <li><%=link_to t('.post.new.label'), root_path %></li>
   <li><%=link_to t('.event_names.label'), event_names_path %></li>
   <li><%=link_to t('.users.label'), edit_user_path %></li>
 </ul>

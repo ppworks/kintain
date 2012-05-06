@@ -2,7 +2,9 @@ body.users {
   ul.menu {
     text-align: center;
     >li {
+      padding: 5px;
       list-style: none;
+      font-size: 24px;
     }
   }
 

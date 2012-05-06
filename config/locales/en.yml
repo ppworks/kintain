@@ -35,6 +35,9 @@ en:
       users:
         label: "Update the user setting."
       edited: "Update user setting."
+      post:
+        new:
+          label: "post new event"
     edit:
       scope_id:
         description: "Set readable scope for your posts."

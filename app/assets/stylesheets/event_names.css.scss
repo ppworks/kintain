@@ -1,3 +1,43 @@
 // Place all the styles related to the EventNames controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body.event_names {
+  ul.events {
+    padding: 0;
+    background: #fff;
+    margin:0 auto;
+    margin-top: 15px;
+    border:1px solid #4d4d4d;
+    width:538px;
+    >li {
+      padding: 10px 8px 1px 8px;
+      overflow:hidden;
+      list-style: none;
+      &:not(:last-child) {
+        border-bottom:1px solid #4d4d4d;
+      }
+      p{
+        font-size:30px;
+        padding-top:13px;
+        padding-left:90px;
+      }
+      img{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      input[type="text"] {
+        display: inline-block;
+        vertical-align: middle;
+        width: 438px;
+        font-size: 24px;
+      }
+    } 
+  }
+  input[type="submit"] {
+    display: block;
+    margin: 15px auto;
+    padding: 15px;
+    width: 240px;
+    font-size: 24px;
+  }
+}

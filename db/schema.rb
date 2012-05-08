@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20120506075919) do
     t.integer  "user_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "event_name_id", :null => false
+    t.integer  "event_name_id"
   end
 
   add_index "posts", ["user_id"], :name => "idx_user_id_on_posts"

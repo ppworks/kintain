@@ -1,6 +1,6 @@
 class EventName < ActiveRecord::Base
   validates_presence_of :name
-  validates_length_of :name, :in => (1..10)
+  validates_length_of :name, :in => (1..7)
   attr_accessible :event_id, :name, :user_id
   belongs_to :event
   belongs_to :user

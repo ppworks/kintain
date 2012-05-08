@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     @events = Event.all
+    @event_names = EventName.list current_user
 
     respond_to do |format|
       format.html # new.html.erb

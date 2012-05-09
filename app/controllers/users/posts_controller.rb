@@ -21,5 +21,10 @@ class Users::PostsController < ApplicationController
     @posts = Post.convert_monthly_chart @date, posts 
     @prev = @date - 1.month
     @next = @date + 1.month
+
+    respond_to do |format|
+      format.html 
+      format.json { render json: posts } if user_signed_in? && @user.id == current_user.id
+    end
   end
 end

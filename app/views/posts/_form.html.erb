@@ -14,7 +14,7 @@
   <ul class="events">
 	<% @event_names.each do|event_name| %>
 	  <li class="eventli">
-	  <p data-text="<%= event_name.name %>"><%= event_name.name %></p>
+    <p data-text="<%= truncate event_name.name,:length=>7,:omission=>'' %>"><%= truncate event_name.name,:length=>7,:omission=>'' %></p>
         <%= image_tag("#{I18n.locale}/event_#{event_name.event_id}.png", :alt => event_name.name, :title => event_name.name, :'data-id' => event_name.event_id) %>
       </li>
 	<% end %>

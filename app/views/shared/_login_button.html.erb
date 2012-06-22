@@ -28,7 +28,6 @@
 		<% if !user_signed_in? || !current_user.has_provider?(Provider.mixi.id) %>
 			<li class="mixi">
 			<%=link_to user_omniauth_authorize_path(:mixi), :class => 'btn' do %>
-				<%= image_tag("btn_mixi.png") %>
 				<p class="logintext"><%= t("shared._login_button.mixi.#{locale_key}") %></p>
 			<% end %>
 			</li>

@@ -21,7 +21,7 @@ group :assets do
 end
 
 group :development do
-  gem 'heroku'
+  gem 'heroku', :github => 'heroku/heroku'
   gem 'foreman'
 end
 

@@ -1,6 +1,6 @@
 $ ->
   listen_click_event_images = () ->
-    $('form ul.events>li img').live 'click', (e) ->
+    $('form ul.events>li img').on 'click', (e) ->
       $('#post_event_id').val($(@).attr('data-id'))
       $('form').submit()
       return
@@ -13,7 +13,7 @@ $ ->
     return
 
   listen_click_day = () ->
-    $('section.chart h2').live 'click', (e) ->
+    $('section.chart h2').on 'click', (e) ->
       location.href = $(@).parent().find('a').attr('href')
     return
   init_posts = () ->

@@ -9,7 +9,7 @@ $ ->
     return
   listen_ajax = () ->
     # remote="true" な処理のlisten
-    $('form[data-remote="true"]').live "submit", (e) ->
+    $('form[data-remote="true"]').on "submit", (e) ->
       $.fancybox.showActivity()
       find_key = "input[type='text'].auto_clear, textarea.auto_clear"
       $(this).find(find_key).attr "readonly", "readonly"
@@ -20,11 +20,11 @@ $ ->
         $(this).find(find_key).val ""
       return
       
-    $('a[data-remote="true"]').live("click", (e) ->
+    $('a[data-remote="true"]').on("click", (e) ->
       $.fancybox.showActivity()
-    ).live("ajax:complete", ->
+    ).on("ajax:complete", ->
       $.fancybox.hideActivity()
-    ).live("ajax:success", ->
+    ).on("ajax:success", ->
       $.fancybox.hideActivity()
     )
     return
